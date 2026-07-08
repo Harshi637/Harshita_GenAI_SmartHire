@@ -1,11 +1,10 @@
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from config import EMBEDDING_MODEL, DATASET_PATH
 
-# Load embedding model once
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer(EMBEDDING_MODEL)
 
-
-def load_jobs(csv_path="data/postings_small.csv"):
+def load_jobs(csv_path=DATASET_PATH):
     """
     Load jobs dataset and clean missing values.
     """

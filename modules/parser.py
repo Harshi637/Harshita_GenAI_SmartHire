@@ -5,13 +5,15 @@ import os
 from dotenv import load_dotenv
 from google import genai
 
+from config import GEMINI_MODEL, RESUME_CACHE_DIR
+
 load_dotenv()
 
 client = genai.Client(
-    api_key=os.getenv("AIzaSyBpi542uGiqaAbH7Aj1I_3pXf6PSu1_xqs")
+    api_key=os.getenv("GEMINI_API_KEY")
 )
 
-CACHE_DIR = "cache/resumes"
+CACHE_DIR = RESUME_CACHE_DIR
 os.makedirs(CACHE_DIR, exist_ok=True)
 
 
@@ -47,7 +49,7 @@ Resume:
 """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model=GEMINI_MODEL,
         contents=prompt
     )
 

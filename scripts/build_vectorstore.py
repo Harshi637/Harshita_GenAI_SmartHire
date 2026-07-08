@@ -5,6 +5,8 @@ from modules.embedding import embed_text
 from modules.embedding import load_jobs
 from modules.embedding import prepare_job_text
 
+from config import VECTOR_INDEX_PATH, VECTOR_METADATA_PATH
+
 print("Loading jobs...")
 
 df = load_jobs()
@@ -25,10 +27,10 @@ index.add(embeddings)
 
 faiss.write_index(
     index,
-    "vectorstore/jobs.index"
+    VECTOR_INDEX_PATH
 )
 
-with open("vectorstore/jobs.pkl", "wb") as f:
+with open(VECTOR_METADATA_PATH, "wb") as f:
     pickle.dump(df, f)
 
 print("Vectorstore created successfully!")
