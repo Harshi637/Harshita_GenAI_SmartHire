@@ -1,6 +1,9 @@
 import streamlit as st
 from PyPDF2 import PdfReader
 
+# Import our parser module
+from modules.parser import parse_resume
+
 st.set_page_config(
     page_title="SmartHire Bot",
     page_icon="📄",
@@ -28,10 +31,19 @@ if uploaded_file is not None:
 
     st.success("Resume uploaded successfully!")
 
-    st.subheader("Extracted Resume Text")
+    # Parse the resume using Gemini
+    profile = parse_resume(text)
+
+    # Display structured JSON
+    st.subheader("📋 Parsed Resume")
+
+    st.json(profile)
+
+    # Display original text
+    st.subheader("📄 Extracted Resume Text")
 
     st.text_area(
-    label="Resume Text",
-    value=text,
-    height=450
+        label="Resume Text",
+        value=text,
+        height=350
     )
