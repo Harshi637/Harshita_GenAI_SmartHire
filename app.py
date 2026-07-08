@@ -31,9 +31,9 @@ if uploaded_file is not None:
 
     st.success("Resume uploaded successfully!")
 
-    # Parse the resume using Gemini
-    profile = parse_resume(text)
-
+    with st.spinner("Parsing resume using Gemini..."):
+        profile = parse_resume(text)
+    
     # Display structured JSON
     st.subheader("📋 Parsed Resume")
 

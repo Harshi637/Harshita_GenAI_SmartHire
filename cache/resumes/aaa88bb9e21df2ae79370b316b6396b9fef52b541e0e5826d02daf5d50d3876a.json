@@ -1,0 +1,60 @@
+{
+    "name": "Arisetti Sai Vishitha",
+    "email": "saivishithaarisetti@gmail.com",
+    "phone": "7396458995",
+    "skills": [
+        "AutoCAD",
+        "MS Office",
+        "Optical Fiber Communication",
+        "Passive Optical Networks",
+        "FTTx",
+        "OSP Engineering",
+        "Problem-solving",
+        "Attention to Detail",
+        "Good Communication Skills",
+        "Machine Learning Algorithms"
+    ],
+    "education": [
+        {
+            "degree": "Electronics and Communication Engineering",
+            "institution": "GMR Institute of Technology",
+            "dates": "2020 \u2013 2024",
+            "gpa": "8.2"
+        },
+        {
+            "degree": "MPC",
+            "institution": "Ascent Junior Classes",
+            "dates": "2018 \u2013 2020",
+            "gpa": "8.9"
+        },
+        {
+            "degree": null,
+            "institution": "DR.K.K.R Gowtham E.M High School",
+            "dates": "2017 \u2013 2018",
+            "percentage": "76.6%"
+        }
+    ],
+    "experience": [
+        {
+            "title": "Computer Vision Intern",
+            "company": "GMR Innovex-FloMobility Hyderabad",
+            "dates": null,
+            "description": "Acquired comprehensive understanding of organizational culture while proficiently implementing various machine learning algorithms to develop diverse models."
+        }
+    ],
+    "projects": [
+        {
+            "title": "Advancing Military Operations through Intelligent IoT Robotics",
+            "description": "Engineered the robot with autonomous functionality for strategic deployment and self-exploding capabilities, enhancing military operations with advanced reconnaissance and tactical capabilities."
+        },
+        {
+            "title": "Smart Bus Ticketing System using GPS",
+            "description": "A wearable device which makes the bus ticketing more easier and faster by using RFID Tags and GPS technology for location tracking which can be used in place of manual tickets."
+        },
+        {
+            "title": "Automatic X-ray Baggage System",
+            "description": "A Neural Network model which identifies the prohibited items in the cabin baggage of an airport that reduces human errors."
+        }
+    ],
+    "target_role": "OSP Drafter"
+}
