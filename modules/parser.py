@@ -2,15 +2,10 @@ import hashlib
 import json
 import os
 
-from dotenv import load_dotenv
-from google import genai
-
 import time
 from google.genai.errors import ServerError
 
 from config import GEMINI_MODEL, RESUME_CACHE_DIR
-
-load_dotenv()
 
 from utils.gemini_client import client
 
@@ -27,22 +22,137 @@ def get_resume_hash(resume_text: str):
 def call_gemini(resume_text: str):
 
     prompt = f"""
-You are an expert resume parser.
+You are an expert Resume Parser.
 
-Extract ONLY the following JSON.
+Extract information from the resume.
 
-Return valid JSON only.
+Return ONLY valid JSON.
+
+Use this schema exactly.
 
 {{
-    "name":"",
-    "email":"",
-    "phone":"",
-    "skills":[],
-    "education":[],
-    "experience":[],
-    "projects":[],
-    "target_role":""
+    "name": "",
+    "email": "",
+    "phone": "",
+
+    "career_domain": "",
+
+    "current_role": "",
+
+    "target_role": "",
+
+    "experience_years": 0,
+
+    "experience_level": "",
+
+    "education": [
+    {
+        "degree":"",
+        "field":"",
+        "institution":"",
+        "year":""
+    }],
+
+    "skills": [],
+
+    "certifications": [],
+
+    "summary": ""
 }}
+
+Rules:
+
+1. career_domain must be one of:
+
+Software Engineering
+Artificial Intelligence
+Data Science
+Cyber Security
+Cloud Computing
+Electronics
+Electrical Engineering
+Mechanical Engineering
+Civil Engineering
+Automobile
+Sales
+Marketing
+Finance
+Accounting
+Human Resources
+Healthcare
+Education
+Business
+Consulting
+Manufacturing
+Government
+Other
+
+2. current_role
+
+Extract the person's most recent role.
+
+Examples:
+
+Software Engineer
+
+Regional Sales Manager
+
+Embedded Engineer
+
+Data Analyst
+
+Mechanical Engineer
+
+Professor
+
+3. target_role
+
+Infer the next logical career role.
+
+Examples:
+
+Software Engineer → Senior Software Engineer
+
+Sales Executive → Sales Manager
+
+Embedded Engineer → Senior Embedded Engineer
+
+4. experience_years
+
+Return only the number.
+
+Example:
+
+5
+
+5. experience_level
+
+One of
+
+Fresher
+
+Junior
+
+Mid
+
+Senior
+
+Lead
+
+Manager
+
+Director
+
+6. summary
+
+Write a professional summary in under 80 words.
+
+7. If a field is missing, return an empty string or empty list.
+8. Determine the candidate's profession from the entire resume, not just the skills section.
+
+9. Never classify an Electronics, Mechanical, Civil, Sales, Marketing, HR, Finance, or Healthcare resume as Software Engineering unless there is clear evidence.
+
+10. If the career domain is uncertain, return "Other".
 
 Resume:
 
@@ -60,8 +170,9 @@ Resume:
             print(f"Server error occurred: {e}")
             time.sleep(2)  # Wait before retrying
     else:
-        raise RuntimeError("Failed to get response from Gemini API after multiple attempts")
-
+        return {
+    "error": "Gemini is temporarily unavailable."
+}
     text = response.text.strip()
 
     if text.startswith("```"):

@@ -47,7 +47,9 @@ class JobSearcher:
             )
 
             job["match_score"] = score
-
+            if score < 50:
+                continue
             results.append(job)
-
+        if not results:
+            return []
         return results

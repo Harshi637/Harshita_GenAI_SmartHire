@@ -1,30 +1,42 @@
 def build_search_query(profile):
 
-    skills = profile.get("skills", [])
+    domain = profile.get("career_domain", "")
+    current_role = profile.get("current_role", "")
+    target_role = profile.get("target_role", "")
+    experience = profile.get("experience_level", "")
+
+    skills = ", ".join(profile.get("skills", []))
 
     education = profile.get("education", [])
 
-    experience = profile.get("experience", [])
+    if isinstance(education, list):
 
-    # Convert dictionaries into strings
-    experience = [str(x) for x in experience]
+        education_text = ", ".join(
+            str(item) for item in education
+        )
 
-    education = [str(x) for x in education]
+    else:
 
-    skills = [str(x) for x in skills]
+        education_text = str(education)
 
     query = f"""
+Career Domain:
+{domain}
+
+Current Role:
+{current_role}
+
 Target Role:
-{profile.get("target_role","")}
+{target_role}
 
-Skills:
-{", ".join(skills)}
-
-Experience:
-{" ".join(experience)}
+Experience Level:
+{experience}
 
 Education:
-{" ".join(education)}
+{education_text}
+
+Skills:
+{skills}
 """
 
-    return query
+    return query.strip()

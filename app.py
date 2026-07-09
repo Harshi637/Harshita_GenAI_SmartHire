@@ -52,6 +52,10 @@ if uploaded_file is not None:
         searcher = JobSearcher()
         query = build_search_query(profile)
         results = searcher.search(query)
+        if not results:
+            st.warning(
+                "⚠️ No strong job matches were found for this resume. AI suggestions and career guidance will be based primarily on your resume instead of a matched job."
+            )
 
     resume_tab, jobs_tab, text_tab, ai_tab, mentor_tab = create_tabs()
 
@@ -65,7 +69,7 @@ if uploaded_file is not None:
 
         st.subheader("🤖 AI Resume Suggestions")
 
-        selected_job = results[0]
+        selected_job = results[0] if results else None
 
         if st.button("Generate Suggestions"):
 
