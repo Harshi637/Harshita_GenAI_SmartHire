@@ -7,14 +7,21 @@ from modules.parser import parse_resume
 from modules.search import JobSearcher
 from utils.helpers import build_search_query
 
+from components.sidebar import show_sidebar
+from components.resume_card import show_resume
+from components.job_card import show_jobs
+from components.tabs import create_tabs
+
 st.set_page_config(
     page_title="SmartHire Bot",
     page_icon="📄",
     layout="wide"
 )
 
+show_sidebar()
+
 st.title("📄 SmartHire Bot")
-st.subheader("Resume Upload Module")
+st.subheader("AI Resume Analyzer & Job Matcher")
 
 uploaded_file = st.file_uploader(
     "Upload your Resume (PDF)",
@@ -40,31 +47,27 @@ if uploaded_file is not None:
         query = build_search_query(profile)
         results = searcher.search(query)
 
-    # Display structured JSON
-    st.subheader("📋 Parsed Resume")
+    resume_tab, jobs_tab, text_tab, ai_tab, mentor_tab = create_tabs()
 
-    st.json(profile)
-    st.subheader("🎯 Top Matching Jobs")
+    with resume_tab:
+        show_resume(profile)
 
-    for i, job in enumerate(results, start=1):
+    with jobs_tab:
+        show_jobs(results)
 
-        with st.expander(f"{i}. {job['job_title']}"):
+    with ai_tab:
+        st.info("Coming in Module 5.2")
 
-            st.write(f"**Company:** {job['company']}")
-            st.write(f"**Location:** {job['job_location']}")
-            st.write(f"**Type:** {job['job_type']}")
+    with mentor_tab:
+        st.info("Coming in Module 5.4")
+    
 
-            st.write("**Skills:**")
-            st.write(job["job_skills"])
+    with text_tab:
 
-            st.write("**Summary:**")
-            st.write(job["job_summary"])
+        st.subheader("📄 Extracted Resume Text")
 
-    # Display original text
-    st.subheader("📄 Extracted Resume Text")
-
-    st.text_area(
-        label="Resume Text",
-        value=text,
-        height=350
-    )
+        st.text_area(
+            label="Resume Text",
+            value=text,
+            height=450
+        )
