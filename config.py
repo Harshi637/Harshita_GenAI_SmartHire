@@ -1,5 +1,5 @@
 # Gemini
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-3.5-flash"
 
 # Embedding Model
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
@@ -12,7 +12,7 @@ VECTOR_METADATA_PATH = "vectorstore/jobs.pkl"
 RESUME_CACHE_DIR = "cache/resumes"
 
 # Search
-TOP_K = 10
+TOP_K = 5
 
 # Dataset
-DATASET_PATH = "data/postings_processed.csv"
+DATASET_PATH = "data/job_market.csv"

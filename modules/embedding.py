@@ -6,12 +6,52 @@ model = SentenceTransformer(EMBEDDING_MODEL)
 
 def load_jobs(csv_path=DATASET_PATH):
     """
-    Load jobs dataset and clean missing values.
+    Load and standardize different job datasets.
     """
+
     df = pd.read_csv(csv_path)
 
-    # Keep only the required columns
-    columns = [
+    # -------- New Dataset --------
+    if "Job_Title" in df.columns:
+
+        df = df.rename(columns={
+            "Job_Title": "job_title",
+            "Company": "company",
+            "City": "job_location",
+            "Job_Type": "job_type",
+            "Skills_Required": "job_skills",
+            "Industry": "industry",
+            "Experience_Level": "experience_level",
+            "Education_Required": "education_required",
+            "Work_Mode": "work_mode",
+            "Salary_LPA": "salary"
+        })
+
+        # Build a richer summary for embeddings
+        df["job_summary"] = (
+            "Industry: " + df["industry"].fillna("") +
+            "\nExperience: " + df["experience_level"].fillna("") +
+            "\nEducation: " + df["education_required"].fillna("") +
+            "\nWork Mode: " + df["work_mode"].fillna("") +
+            "\nSalary (LPA): " + df["salary"].astype(str)
+        )
+
+    # -------- Old Dataset --------
+    else:
+
+        columns = [
+            "job_title",
+            "company",
+            "job_location",
+            "job_type",
+            "job_summary",
+            "job_skills",
+        ]
+
+        df = df[columns]
+
+    # Keep only the columns used by the app
+    required_columns = [
         "job_title",
         "company",
         "job_location",
@@ -20,7 +60,7 @@ def load_jobs(csv_path=DATASET_PATH):
         "job_skills",
     ]
 
-    df = df[columns]
+    df = df[required_columns]
 
     df.fillna("", inplace=True)
 
