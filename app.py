@@ -26,8 +26,8 @@ st.set_page_config(
 
 show_sidebar()
 
-st.title("📄 SmartHire Bot")
-st.subheader("AI Resume Analyzer & Job Matcher")
+st.title("🤖 SmartHire Bot")
+st.caption("AI-Powered Resume Analyzer, Job Matcher & Career Mentor")
 
 uploaded_file = st.file_uploader(
     "Upload your Resume (PDF)",
@@ -115,3 +115,8 @@ if uploaded_file is not None:
             value=text,
             height=450
         )
+st.markdown("---")
+
+st.caption(
+    "Built with ❤️ using Gemini • FAISS • Sentence Transformers • Streamlit"
+)

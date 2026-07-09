@@ -38,7 +38,15 @@ class JobSearcher:
 
             job = self.jobs.iloc[idx].to_dict()
 
-            job["score"] = float(distance)
+            score = max(
+                0,
+                min(
+                    100,
+                    round((1 / (1 + float(distance))) * 100)
+                )
+            )
+
+            job["match_score"] = score
 
             results.append(job)
 

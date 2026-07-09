@@ -9,13 +9,21 @@ def show_sidebar():
 
         st.markdown("---")
 
-        st.success("✅ Resume Parser")
+        st.subheader("✨ Features")
 
-        st.success("✅ Semantic Search")
+        st.success("📄 Resume Parsing")
+        st.success("🎯 Semantic Job Matching")
+        st.success("🤖 AI Resume Suggestions")
+        st.success("💬 Career Mentor")
 
-        st.info("🚧 Resume Suggestions")
+        st.markdown("---")
 
-        st.info("🚧 Career Mentor")
+        st.subheader("⚙ Tech Stack")
+
+        st.write("• Gemini 2.5 Flash")
+        st.write("• Sentence Transformers")
+        st.write("• FAISS")
+        st.write("• Streamlit")
 
         st.markdown("---")
 

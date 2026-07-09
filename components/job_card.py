@@ -22,3 +22,5 @@ def show_jobs(results):
             st.write("### 📄 Summary")
 
             st.write(job["job_summary"])
+
+            st.success(f"⭐ Match Score: {job['match_score']}%")
