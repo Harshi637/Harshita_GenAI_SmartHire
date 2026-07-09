@@ -3,7 +3,6 @@ venv/
 __pycache__/
 *.pyc
 
-vectorstore/
 *.faiss
 
 .ipynb_checkpoints/
