@@ -11,8 +11,12 @@ from components.sidebar import show_sidebar
 from components.resume_card import show_resume
 from components.job_card import show_jobs
 from components.tabs import create_tabs
+
 from modules.suggestions import generate_suggestions
 from components.suggestions_card import show_suggestions
+
+from modules.mentor import ask_mentor
+from components.mentor_card import show_mentor
 
 st.set_page_config(
     page_title="SmartHire Bot",
@@ -78,8 +82,29 @@ if uploaded_file is not None:
                 show_suggestions(suggestions)
 
     with mentor_tab:
-        st.info("Coming in Module 5.4")
-    
+
+        st.subheader("💬 Career Mentor")
+
+        question = st.text_area(
+            "Ask your career question",
+            placeholder="Example: Create a 3-month roadmap to become an AI Engineer."
+        )
+
+        if st.button("Ask Mentor"):
+
+            if question.strip() == "":
+                st.warning("Please enter a question.")
+            else:
+
+                with st.spinner("Thinking..."):
+
+                    answer = ask_mentor(
+                        profile,
+                        results[0],
+                        question
+                    )
+
+                show_mentor(answer)
 
     with text_tab:
 
