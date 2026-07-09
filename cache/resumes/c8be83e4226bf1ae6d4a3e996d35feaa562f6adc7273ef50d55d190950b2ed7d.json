@@ -1,0 +1,98 @@
+{
+    "name": "DASARI VASU",
+    "email": "vasudasari92@gmail.com",
+    "phone": "8297578296",
+    "skills": [
+        "Apex",
+        "Lightning Web Components (LWC)",
+        "Flow automation",
+        "integrations",
+        "document generation solutions",
+        "Conga",
+        "S-Docs",
+        "REST APIs",
+        "OAuth",
+        "Named Credentials",
+        "SOQL",
+        "Triggers",
+        "Flows (Record-Triggered, Screen Flows)",
+        "Lightning App Builder",
+        "Validation Rules",
+        "Approval Processes",
+        "Process Builder",
+        "Workflow Rules (Migration to Flow)",
+        "SFDX",
+        "Git",
+        "JIRA",
+        "Spira",
+        "Agile",
+        "Scrum",
+        "Code Review",
+        "Performance Optimization"
+    ],
+    "education": [
+        {
+            "degree": "B.Tech \u2013 Information Technology",
+            "institution": "JNTU Kakinada",
+            "year": "2014"
+        }
+    ],
+    "experience": [
+        {
+            "title": "Senior Salesforce Developer",
+            "company": "Capgemini Technology Services India Ltd",
+            "dates": "Sept 2025 \u2013 Present",
+            "description": [
+                "Designed and developed scalable Salesforce solutions for Sales applications using Apex, LWC, and Flows.",
+                "Built and optimized complex Record-Triggered and Screen Flows, improving automation efficiency and reducing manual effort.",
+                "Migrated legacy automation (Process Builder & Workflow Rules) to Flow, enhancing performance and maintainability.",
+                "Implemented S-Docs document generation solutions to automate business documentation and reporting.",
+                "Designed and implemented secure REST API integrations using Named Credentials and OAuth, including error handling mechanisms.",
+                "Created custom objects, profiles, and permission sets aligned with business requirements.",
+                "Contributed to technical design documentation and solution architecture discussions.",
+                "Performed code reviews, ensuring adherence to Salesforce best practices and governor limits.",
+                "Supported post-production enhancements, defect resolution, and performance optimization."
+            ]
+        },
+        {
+            "title": "Salesforce Developer",
+            "company": "DXC Technology (EIT Services India Pvt Ltd)",
+            "dates": "Dec 2014 \u2013 Sept 2025",
+            "description": [
+                "Led development efforts for key modules, ensuring scalable and maintainable solution design.",
+                "Designed and implemented real-time and batch integrations between Salesforce and external systems using REST APIs.",
+                "Developed Apex classes, triggers, and LWC components across Sales & Service Cloud.",
+                "Led issue resolution and implemented performance optimization strategies.",
+                "Actively contributed to technical design and system architecture discussions.",
+                "Delivered multiple enterprise Salesforce solutions across CPQ, integrations, and enhancements.",
+                "Built reusable Lightning Web Components, improving development efficiency and maintainability.",
+                "Implemented automation using Flows and Apex, reducing manual effort and improving process efficiency.",
+                "Worked on Conga Composer for document generation and reporting automation.",
+                "Participated in solution design, gap analysis, and performance tuning.",
+                "Collaborated with cross-functional teams to deliver enhancements on time.",
+                "Conducted code reviews and knowledge transfer sessions.",
+                "Developed and maintained Salesforce integrations with external systems.",
+                "Built custom automation and UI components using Apex and LWC.",
+                "Ensured adherence to best practices and scalable design patterns and governor limits."
+            ]
+        },
+        {
+            "title": "Application Support",
+            "company": "DXC Technology (EIT Services India Pvt Ltd)",
+            "dates": "Dec 2014 \u2013 July 2019",
+            "description": [
+                "Led a team of 7 members, improving operational efficiency by 80% through automation.",
+                "Reduced average handling time by 50% via process improvements.",
+                "Managed incident resolution and implemented system enhancements.",
+                "Worked closely with stakeholders to ensure service quality and delivery excellence."
+            ]
+        }
+    ],
+    "projects": [
+        "Commercial Metals Company (CMC)",
+        "LINX Global (Integration & CRM Enhancements)",
+        "HPE (Multiple Programs \u2013 CPQ, Integration, Enhancements)",
+        "Salesforce Integrations & Portal Development"
+    ],
+    "target_role": "Senior Salesforce Developer"
+}

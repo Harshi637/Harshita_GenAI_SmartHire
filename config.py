@@ -15,4 +15,4 @@ RESUME_CACHE_DIR = "cache/resumes"
 TOP_K = 10
 
 # Dataset
-DATASET_PATH = "data/postings_small.csv"
+DATASET_PATH = "data/postings_processed.csv"

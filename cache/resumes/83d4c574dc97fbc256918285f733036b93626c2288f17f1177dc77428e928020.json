@@ -1,0 +1,37 @@
+{
+    "name": "Harshita Arisetti",
+    "email": "harshitaarisetti@gmail.com",
+    "phone": "+91 7032963637",
+    "skills": [
+        "C",
+        "C++",
+        "Python",
+        "HTML",
+        "Prompt Engineering",
+        "Gemini API",
+        "RAG",
+        "FAISS",
+        "LLMs",
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Streamlit",
+        "Google Colab",
+        "Figma"
+    ],
+    "education": [
+        "B.Tech in Computer Science and Engineering, Indian Institute of Information Technology Tiruchirappalli (Expected Graduation: 2028), CGPA: 7.8/10",
+        "Intermediate (State Board), Sri Chaitanya Junior College (2024), 925/1000 (92.5%)",
+        "CBSE Class X, Green City EM School (2022), 432/500 (86.2%)"
+    ],
+    "experience": [],
+    "projects": [
+        "Resume Parser: AI-powered parser to extract structured information from PDF resumes.",
+        "AI FAQ Chatbot: Built a chatbot using Generative AI and prompt engineering.",
+        "RAG Document Chatbot: Question -answering system using RAG, FAISS, and Gemini API.",
+        "Semantic Search using FAISS: Implemented embedding -based semantic search.",
+        "Mathematical Compute Operating System: Collaborative OS project focused on mathematical computation.",
+        "AI Blog & Email Generator: Generated blogs and professional emails using LLMs."
+    ],
+    "target_role": "AI/Generative AI/Software Development Intern"
+}

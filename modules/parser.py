@@ -5,6 +5,9 @@ import os
 from dotenv import load_dotenv
 from google import genai
 
+import time
+from google.genai.errors import ServerError
+
 from config import GEMINI_MODEL, RESUME_CACHE_DIR
 
 load_dotenv()
@@ -46,10 +49,18 @@ Resume:
 {resume_text}
 """
 
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt
-    )
+    for _ in range(3):  # Try up to 3 times
+        try:
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt
+            )
+            break
+        except ServerError as e:
+            print(f"Server error occurred: {e}")
+            time.sleep(2)  # Wait before retrying
+    else:
+        raise RuntimeError("Failed to get response from Gemini API after multiple attempts")
 
     text = response.text.strip()
 
