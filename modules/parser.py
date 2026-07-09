@@ -9,9 +9,7 @@ from config import GEMINI_MODEL, RESUME_CACHE_DIR
 
 load_dotenv()
 
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
+from utils.gemini_client import client
 
 CACHE_DIR = RESUME_CACHE_DIR
 os.makedirs(CACHE_DIR, exist_ok=True)

@@ -11,6 +11,8 @@ from components.sidebar import show_sidebar
 from components.resume_card import show_resume
 from components.job_card import show_jobs
 from components.tabs import create_tabs
+from modules.suggestions import generate_suggestions
+from components.suggestions_card import show_suggestions
 
 st.set_page_config(
     page_title="SmartHire Bot",
@@ -56,7 +58,24 @@ if uploaded_file is not None:
         show_jobs(results)
 
     with ai_tab:
-        st.info("Coming in Module 5.2")
+
+        st.subheader("🤖 AI Resume Suggestions")
+
+        selected_job = results[0]
+
+        if st.button("Generate Suggestions"):
+
+            with st.spinner("Analyzing resume..."):
+
+                suggestions = generate_suggestions(profile, selected_job)
+
+            if suggestions is None:
+
+                st.error("Unable to generate AI suggestions. Please check your Gemini API key or quota.")
+
+            else:
+
+                show_suggestions(suggestions)
 
     with mentor_tab:
         st.info("Coming in Module 5.4")
