@@ -79,8 +79,11 @@ if uploaded_file is not None:
 
             if suggestions is None:
 
-                st.error("Unable to generate AI suggestions. Please check your Gemini API key or quota.")
-
+                 st.warning(
+        "⚠️ AI suggestions are temporarily unavailable. "
+        "This is usually due to Gemini server load or API quota. "
+        "Please try again later."
+    )
             else:
 
                 show_suggestions(suggestions)

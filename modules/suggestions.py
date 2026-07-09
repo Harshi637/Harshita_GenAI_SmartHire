@@ -1,14 +1,9 @@
-import os
-
-from dotenv import load_dotenv
-from google import genai
-
 from config import GEMINI_MODEL
 
-load_dotenv()
-
 from utils.gemini_client import client
-from google.genai.errors import ClientError
+from google.genai.errors import ClientError,ServerError
+
+import time
 
 def generate_suggestions(profile, job):
 
@@ -101,22 +96,27 @@ Score: xx/100
 - ...
 """
 
+    for _ in range(3):
+
+        try:
+
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt
+            )
+
+            return response.text
+
+        except ServerError:
+            time.sleep(3)
+
+        except ClientError:
+            return None
+
+    return None
     response = client.models.generate_content(
         model=GEMINI_MODEL,
         contents=prompt
     )
 
     return response.text
-
-    try:
-
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt
-        )
-
-        return response.text
-
-    except ClientError:
-
-        return None

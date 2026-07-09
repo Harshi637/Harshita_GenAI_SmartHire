@@ -1,3 +1,5 @@
+import time
+from google.genai.errors import ServerError, ClientError
 from config import GEMINI_MODEL
 from utils.gemini_client import client
 
@@ -125,9 +127,21 @@ Suggested response format:
 ...
 """
 
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt
-    )
+    for _ in range(3):
 
-    return response.text
+        try:
+
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt
+            )
+
+            return response.text
+
+        except ServerError:
+            time.sleep(3)
+
+        except ClientError:
+            return "⚠️ Career Mentor is temporarily unavailable due to an API issue. Please try again later."
+
+    return "⚠️ Gemini servers are currently busy. Please try again in a few minutes."
